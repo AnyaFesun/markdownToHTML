@@ -5,10 +5,9 @@ import java.util.regex.Pattern;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 public class MarkdownToHTML {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InvalidTextException {
         // Перевірка, чи переданий шлях до вхідного файлу
         if (args.length < 1) {
             System.err.println("Usage: MarkdownToHTML <inputFile> [outputFile]");
@@ -51,7 +50,7 @@ public class MarkdownToHTML {
         }
     }
 
-    private static String convertMarkdownToHTML(String markdown) {
+    private static String convertMarkdownToHTML(String markdown) throws InvalidTextException {
         StringBuilder HTMLContent = new StringBuilder();
 
         String prePattern = "```\\n([^`]*)```"; // preformatted text
@@ -60,8 +59,7 @@ public class MarkdownToHTML {
         String monospacePattern = "`([^`]+)`"; // monospaced
 
         if ((markdown.split("```").length - 1) % 2 != 0 ) {
-            System.err.println("Error: Incorrect data format!");
-            System.exit(1);
+            throw new InvalidTextException("Error: Incorrect data format!");
         }
         markdown = markdown.replaceAll(prePattern, "<pre>$1</pre>");
 
@@ -73,8 +71,7 @@ public class MarkdownToHTML {
                 if (str.contains("**`") || str.contains("**_") ||
                         str.contains("_**") || str.contains("_`") ||
                         str.contains("`**`") || str.contains("`_") ) {
-                    System.err.println("Error: Incorrect data format!");
-                    System.exit(1);
+                    throw new InvalidTextException("Error: Incorrect data format!");
                 }
 
                 Pattern pattern = Pattern.compile("\\b\\w*_[^_\\s]+\\w*\\b");
@@ -93,8 +90,7 @@ public class MarkdownToHTML {
                     str = str.replaceAll(monospacePattern, "<tt>$1</tt>");
                 }
                 else {
-                    System.err.println("zError: Incorrect data format!");
-                    System.exit(1);
+                    throw new InvalidTextException("Error: Incorrect data format!");
                 }
 
                 str = str.replaceAll("(?m)^\\s*$", "</p><p>");
