@@ -7,21 +7,7 @@ import java.util.List;
 import java.util.regex.Matcher;
 
 public class MarkdownToHTML {
-    public static void main(String[] args) throws InvalidTextException {
-        // Перевірка, чи переданий шлях до вхідного файлу
-        if (args.length < 1) {
-            System.err.println("Usage: MarkdownToHTML <inputFile> [outputFile]");
-            System.exit(33);
-        }
-
-        String inputFile = args[0];
-        String outputFile = null;
-
-        // Якщо вказано аргумент з вихідним файлом
-        if (args.length >= 3 && args[1].equals("--out")) {
-            outputFile = args[2];
-        }
-
+    public MarkdownToHTML(String inputFile, String outputFile)  throws IOException, InvalidTextException {
         // Читання вмісту вхідного файлу
         StringBuilder markdownContent = new StringBuilder();
         try (BufferedReader reader = new BufferedReader(new FileReader(inputFile))) {
@@ -29,9 +15,6 @@ public class MarkdownToHTML {
             while ((line = reader.readLine()) != null) {
                 markdownContent.append(line).append("\n");
             }
-        } catch (IOException e) {
-            System.err.println("Error reading input file: " + e.getMessage());
-            System.exit(1);
         }
 
         // Перетворення Markdown у HTML
@@ -43,12 +26,41 @@ public class MarkdownToHTML {
         } else {
             try (PrintWriter writer = new PrintWriter(new FileWriter(outputFile))) {
                 writer.println(htmlContent);
-            } catch (IOException e) {
-                System.err.println("Error writing output file: " + e.getMessage());
-                System.exit(1);
             }
+//            catch (IOException e) {
+//                System.err.println("Error writing output file: " + e.getMessage());
+//                System.exit(1);
+//            }
         }
     }
+
+
+//    public void MarkdownToHTML (String inputFile, String outputFile) throws IOException, InvalidTextException {
+//        // Читання вмісту вхідного файлу
+//        StringBuilder markdownContent = new StringBuilder();
+//        try (BufferedReader reader = new BufferedReader(new FileReader(inputFile))) {
+//            String line;
+//            while ((line = reader.readLine()) != null) {
+//                markdownContent.append(line).append("\n");
+//            }
+//        }
+//
+//        // Перетворення Markdown у HTML
+//        String htmlContent = convertMarkdownToHTML(markdownContent.toString());
+//
+//        // Виведення або запис HTML
+//        if (outputFile == null) {
+//            System.out.println(htmlContent);
+//        } else {
+//            try (PrintWriter writer = new PrintWriter(new FileWriter(outputFile))) {
+//                writer.println(htmlContent);
+//            }
+////            catch (IOException e) {
+////                System.err.println("Error writing output file: " + e.getMessage());
+////                System.exit(1);
+////            }
+//        }
+//    }
 
     private static String convertMarkdownToHTML(String markdown) throws InvalidTextException {
         StringBuilder HTMLContent = new StringBuilder();
