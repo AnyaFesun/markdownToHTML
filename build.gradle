@@ -14,6 +14,15 @@ dependencies {
     testImplementation 'org.junit.jupiter:junit-jupiter'
 }
 
+tasks.register('runApp', JavaExec) {
+    classpath = sourceSets.main.runtimeClasspath
+
+    mainClass = 'org.example.Main'
+
+    //args './src/main/resources/test.txt'
+    args = ['./src/main/resources/test.txt', '--out ./src/main/resources/output.html']
+}
+
 test {
     useJUnitPlatform()
 }

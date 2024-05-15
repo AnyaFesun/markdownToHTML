@@ -27,40 +27,8 @@ public class MarkdownToHTML {
             try (PrintWriter writer = new PrintWriter(new FileWriter(outputFile))) {
                 writer.println(htmlContent);
             }
-//            catch (IOException e) {
-//                System.err.println("Error writing output file: " + e.getMessage());
-//                System.exit(1);
-//            }
         }
     }
-
-
-//    public void MarkdownToHTML (String inputFile, String outputFile) throws IOException, InvalidTextException {
-//        // Читання вмісту вхідного файлу
-//        StringBuilder markdownContent = new StringBuilder();
-//        try (BufferedReader reader = new BufferedReader(new FileReader(inputFile))) {
-//            String line;
-//            while ((line = reader.readLine()) != null) {
-//                markdownContent.append(line).append("\n");
-//            }
-//        }
-//
-//        // Перетворення Markdown у HTML
-//        String htmlContent = convertMarkdownToHTML(markdownContent.toString());
-//
-//        // Виведення або запис HTML
-//        if (outputFile == null) {
-//            System.out.println(htmlContent);
-//        } else {
-//            try (PrintWriter writer = new PrintWriter(new FileWriter(outputFile))) {
-//                writer.println(htmlContent);
-//            }
-////            catch (IOException e) {
-////                System.err.println("Error writing output file: " + e.getMessage());
-////                System.exit(1);
-////            }
-//        }
-//    }
 
     private static String convertMarkdownToHTML(String markdown) throws InvalidTextException {
         StringBuilder HTMLContent = new StringBuilder();
