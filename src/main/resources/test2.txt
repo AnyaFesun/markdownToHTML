@@ -1,11 +1,11 @@
-текст **жирним**
-його _курсивним_ с_с
-або `фіксованої ширини`
- Також є можливість
+text in **bold**
+his _italics_ **ss
+or ``fixed width''
+  There is also a possibility
 ```
- зберігати ** фрагменти **преформатованого тексту:```
+  save ** fragments of **reformatted text:```
 ```
-Цей текст є преформатований.
-   Це означає, що він відобразиться, як є, і жодне інше форматування, як от **жирний** чи _курсив_ на нього не
-впливає.          А ще тут усі пробіли, відступи та перенесення рядка зберігаються як є
+This text is reformatted.
+    This means that it will be displayed as is and no other formatting such as **bold** or _italics_ will be applied to it
+affects And here all spaces, indents and line breaks are kept as is
 ```
