@@ -20,7 +20,7 @@ tasks.register('runApp', JavaExec) {
     mainClass = 'org.example.Main'
 
     //args './src/main/resources/test.txt'
-    args = ['./src/main/resources/test.txt', '--out ./src/main/resources/output.html']
+    args = ['./src/main/resources/test.txt', '--out', './src/main/resources/output.html']
 }
 
 test {
