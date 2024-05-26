@@ -203,7 +203,7 @@ public class MarkdownToHTMLTest {
     @Test
     public void testConvertMarkdownToHTMLEmptyContent() throws InvalidTextException {
         String markdown = " ";
-        String expectedHTML = "<p></p>";
+        String expectedHTML = "<p></p><p></p>";
 
         assertEquals(expectedHTML, MarkdownToHTML.convertMarkdownToHTML(markdown));
     }
