@@ -31,7 +31,7 @@ public class MarkdownToHTML {
         }
     }
 
-    private static String convertMarkdownToHTML(String markdown) throws InvalidTextException {
+    public static String convertMarkdownToHTML(String markdown) throws InvalidTextException {
         StringBuilder HTMLContent = new StringBuilder();
 
         String prePattern = "```\\n([^`]*)```";
@@ -81,7 +81,7 @@ public class MarkdownToHTML {
     }
 
 
-    private static String convertFormatANSI(String markdown) throws InvalidTextException {
+    public static String convertFormatANSI(String markdown) throws InvalidTextException {
         String ansiFormat = convertMarkdownToHTML(markdown);
 
         Pattern prePattern = Pattern.compile("<pre>(.*?)</pre>", Pattern.DOTALL);
