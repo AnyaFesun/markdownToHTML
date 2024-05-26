@@ -199,4 +199,20 @@ public class MarkdownToHTMLTest {
         assertThrows(InvalidTextException.class, () -> MarkdownToHTML.convertMarkdownToHTML(invalidMarkdown));
     }
 
+
+    @Test
+    public void testConvertMarkdownToHTMLEmptyContent() throws InvalidTextException {
+        String markdown = " ";
+        String expectedHTML = "<p></p>";
+
+        assertEquals(expectedHTML, MarkdownToHTML.convertMarkdownToHTML(markdown));
+    }
+
+    @Test
+    public void testConvertFormatANSIEmptyContent() throws InvalidTextException {
+        String markdown = " ";
+        String expectedANSI = "\n\n";
+
+        assertEquals(expectedANSI, MarkdownToHTML.convertFormatANSI(markdown));
+    }
 }
